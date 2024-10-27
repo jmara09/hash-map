@@ -91,6 +91,17 @@ class LinkedList
     end
   end
 
+  def length
+    @node = head
+    @count = @node.nil? ? 0 : 1
+    loop do
+      return @count if @node.next_node.nil? || @count.zero?
+
+      @node = @node.next_node
+      @count += 1
+    end
+  end
+
   def to_s
     @node = head
     string = ''

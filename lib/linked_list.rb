@@ -137,13 +137,18 @@ class LinkedList
   def remove_at(index)
     @node = head
     @count = 0
+    @deleted_value = nil
     return puts 'Invalid index' if index >= size
 
     loop do
       if index.zero?
-        break @head = @head.next_node
+        @deleted_value = head.value.values
+        @head = @head.next_node
+        break
       elsif index == @count + 1
-        break @node.next_node = @node.next_node.next_node
+        @deleted_value =  @node.next_node.value.values
+        @node.next_node = @node.next_node.next_node
+        break
       else
         @count += 1
         @node = @node.next_node
@@ -151,5 +156,6 @@ class LinkedList
     end
     @size -= 1
     @tail = @node if @node.next_node.nil?
+    @deleted_value
   end
 end

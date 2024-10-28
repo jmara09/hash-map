@@ -62,11 +62,11 @@ class LinkedList
     end
   end
 
-  def contains?(value)
+  def contains_key?(key)
     @node = head
 
     loop do
-      if @node.value == value
+      if @node.value.keys.join == key
         return true
       elsif @node.next_node.nil?
         return false
